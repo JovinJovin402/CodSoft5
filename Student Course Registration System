@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class CourseReg {
+    //Course Database
+    String[] code= {"A1","A2","A3","A4","A5"};
+    String[] title= {"Mechanical", "Computer Science", "IT", "Robotics", "AI&ML"};
+    String[] description= {"Study of mechanisms", "Study of computers", "Information Technology", "Study of Robots",
+                            "Artificial Intelligence & Machine learning"};
+    int[] capacity= {60, 80, 80, 80, 100};
+    int[] available_slots= {30, 20, 0, 25, 5};
+    String[] schedule= {"4 years", "4 years", "3 years", "3 years", "3 years"};
+
+    //Available Course Display
+    public void display(){
+        for(int i=0; i<code.length; i++){
+            if(available_slots[i]>0){
+                System.out.println("Code: "+code[i]+"=> Title: "+title[i]+"=> Description: "+description[i]+"=> Capacity: " +
+                        capacity[i]+"=> Slots available: "+available_slots[i]+"=> Schedule: "+schedule[i]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        CourseReg co= new CourseReg();
+        Scanner sc= new Scanner(System.in);
+        //Student Database
+        int[] id= new int[80];
+        String[] name= new String[80];
+        String[] course= new String[80];
+        while (true) {
+            System.out.print("Is there any student?(Yes/No) ");
+            String a = sc.nextLine().toUpperCase();
+            int cnt = 0;
+            if (a.equals("YES")) {
+                co.display();
+                System.out.print("Enter your ID: ");
+                id[cnt] = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Enter your Name: ");
+                name[cnt] = sc.nextLine();
+                System.out.print("Enter the course you want to register: ");
+                course[cnt] = sc.nextLine();
+                System.out.println("Congratulations " + name[cnt] + "! You are successfully registered for " + course[cnt] + '.');
+                cnt++;
+            }
+            else {
+                break;
+            }
+        }
+    }
+}
